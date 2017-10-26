@@ -1,4 +1,6 @@
 public interface Preis {
-    public void Preis(double pricePerHour);
-    public double getPriceForTime(Time time);
+ 
+	public void setPricePerHour(double pricePerHour);		//setzt den Preis pro Stunde (ggf dynamisch?) 
+    
+	public double getPriceForTime(Time time);				//gibt den Preis für die Parkzeit
 }
