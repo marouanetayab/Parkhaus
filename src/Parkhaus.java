@@ -1,5 +1,5 @@
 public interface Parkhaus {
-
+	
 	public int getNextPlace();				//sucht den nächsten freien platz raus
   
 	public void park(Fahrzeug auto);		//parkt das auto auf dem nächsten freien Platz
