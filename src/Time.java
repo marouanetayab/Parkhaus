@@ -1,4 +1,4 @@
-public class Time {
+public class Time implements Parktime {
 		private int hour, min;
 
 		public Time(float time) {
@@ -12,17 +12,17 @@ public class Time {
 			}
 			hour=hour % 24;
 		}
-		public int stunden() {
+		public int getHours() {
 			return hour;
 		}
 
-		public int minuten() {
+		public int getMinutes() {
 			return min;
 		}
 
 		void add(Time other) {
-			min+=other.minuten();
-			hour+=other.stunden();
+			min+=other.getHours();
+			hour+=other.getMinutes();
 			fix();
 		}
 
@@ -46,14 +46,18 @@ public class Time {
 		public boolean equals(Object other) {
 			if (other.getClass() != Time.class)
 				return false;
-			return((hour==((Time) other).stunden())&&(min==((Time) other).minuten()));
+			return((hour==((Time) other).getHours())&&(min==((Time) other).getMinutes()));
 		}
 
 		public float toFloat(){
-			float x = stunden();
-			x += (float)minuten()/100;
+			float x = getHours();
+			x += (float)getMinutes()/100;
 			return x;
 		}
-		
+
+	@Override
+	public int getHoursRounded() {
+		return (int)Math.floor(toFloat());
+	}
 }
 
