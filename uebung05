@@ -1,0 +1,31 @@
+@startuml
+class Zug {
+  name : String
+}
+class Fahrt {
+   fahrtnummer : Integer
+   abfahrtzeit : Time
+   Entfernung : Double
+   Startort : Stadt
+   Zielort : Stadt
+}
+class Bahnhof{
+   abfahrtzeiten : list
+   name : String
+   gleise : Gleis[]
+}
+class Fahrplan{
+}
+class Gleis{
+  gleisnummer : Integer
+}
+class Stadt{
+   name : String
+}
+Bahnhof '1' -->  '1..*'Fahrplan
+Fahrplan '0..*' --> '1..*' Fahrt
+Gleis '2..*' --> '1' Bahnhof
+Stadt'0..*' --> '1' Bahnhof
+Fahrt '0..*' --> '2..*' Bahnhof
+Zug '1' --> '0..*' Fahrt
+@enduml
