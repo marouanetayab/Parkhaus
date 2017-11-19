@@ -1,0 +1,24 @@
+@startuml
+title __Auto im Parkhaus parken__
+|Manager|
+start
+:Parkgebuehren festlegen;
+stop
+|Kunde|
+start
+:Will einfahren;
+|Schrankenwaerter|
+:Schranke oeffnen;
+|Einweiser|
+:Parkplatz zuweisen;
+|Kassierer|
+:Parkgebuehren berechnen;
+|Kunde|
+:Parkgebuehren bezahlen;
+:Rausfahren;
+|Schrankenwaerter|
+:Schranke oeffnen;
+|Einweiser|
+:Parkplatz wieder freigeben;
+stop
+@enduml

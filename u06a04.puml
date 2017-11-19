@@ -1,0 +1,13 @@
+@startuml
+title __Parkhaus verlassen__
+(*) --> "Kunde moechte Parkhaus verlassen"
+if "Ticket bezahlt?" then
+-->[true] "Schranke oeffnet sich"
+--> "Platz wird wieder frei gegeben"
+-->(*)
+else
+->[false] "Kunde muss zum Ticketautomaten"
+--> "Kunde bezahlt das Ticket"
+-left-> "Schranke oeffnet sich"
+endif
+@enduml

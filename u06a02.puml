@@ -1,0 +1,34 @@
+@startuml
+title Konferenz buchen
+skinparam sequenceParticipant underline
+hide footbox
+actor "User" as U
+participant ":CIS" as C
+participant ":CheckVisa" as V
+
+activate U
+
+U -> C: Konferenz buchen
+activate C
+
+alt national
+U -> C
+C --> U: Weiterleitung zur Bezahlung
+else international
+
+U -> C
+C -> V : Check Visum
+activate V
+
+alt Visum erlaubt
+V-->C : erlaubt
+C --> U: Weiterleitung zur Bezahlung
+
+else gesperrt
+V--> C : gesperrt
+deactivate V
+C --> U: Buchung abgebrochen
+
+end
+end
+@enduml

@@ -1,0 +1,41 @@
+@startuml
+title Nationale Konferenz buchen
+skinparam sequenceParticipant underline
+hide footbox
+actor "User" as U
+participant ":CIS" as C
+participant ":Bank" as B
+participant ":CardSystem" as E
+activate U
+
+U -> C: Konferenz buchen
+activate C
+
+alt mit Lastschrift zahlen
+U -> B
+activate B
+B --> C: Daten erhalten
+deactivate B
+C --> U: Buchungsbestaetigung
+
+else mit Kreditkarte zahlen
+U -> C
+C -> E: Konto Abfrage
+activate E
+alt Konto leer/gesperrt
+
+E --> C: Konto leer/gesperrt
+C --> U: Fehler
+else Zahlung erfolgt
+E --> C : Zahlung erfolgt
+E --> U: Bestaetigung
+deactivate E
+C --> U: Buchungsbestaetigung
+end
+
+else Fehler: Nicht korrekte Daten
+C --> U: Fehler: keine Zahlung erfolgt
+end
+
+
+@enduml

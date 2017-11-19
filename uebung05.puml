@@ -14,18 +14,18 @@ class Bahnhof{
    name : String
    gleise : Gleis[]
 }
-class Fahrplan{
+class Fahrplan {
 }
-class Gleis{
+class Gleis {
   gleisnummer : Integer
 }
-class Stadt{
+class Stadt {
    name : String
 }
-Bahnhof '1' -->  '1..*'Fahrplan
-Fahrplan '0..*' --> '1..*' Fahrt
-Gleis '2..*' --> '1' Bahnhof
-Stadt'0..*' --> '1' Bahnhof
-Fahrt '0..*' --> '2..*' Bahnhof
-Zug '1' --> '0..*' Fahrt
+Fahrplan "0*" --> "1..*" Fahrt
+Gleis "2..*" --> "1" Bahnhof
+Stadt"0..*" --> "1" Bahnhof
+Fahrt "0..*" --> "2..*" Bahnhof
+Zug "1" --> "0..*" Fahrt
+
 @enduml

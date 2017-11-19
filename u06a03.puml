@@ -1,0 +1,26 @@
+@startuml
+title Auto im Parkhaus parken
+skinparam sequenceParticipant underline
+hide footbox
+actor ":Kunde" as A
+participant ":Parkhaus" as C
+participant ":Parkplatzfinder" as B
+activate A
+A -> C: Parkhaus frei?
+activate C
+alt alle Parkplaetze besetzt
+A -> C : Einfahrtversuch
+C --> A: Fehlermeldung: Alles voll
+
+
+else Parkplatz frei
+A -> C : Einfahrtversuch
+C -> B: naechste freie Platznummer
+activate B
+B --> C: Nummer
+deactivate B
+C --> A: Platzzuweisung
+end
+deactivate A
+deactivate C
+@enduml
