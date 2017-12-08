@@ -1,0 +1,23 @@
+9.3 : Adapter
+
+@startuml
+skinparam classAttributeIconSize 0
+class Editor {
+ -position: Punkt
++saveLinie( farbe: Farbe, zentimeter: int )
+}
+class Altsystem {
+ -position: Punkt
+ +saveLinie( farbe: Farbe, millimeter: int )
+}
+class Adapter1 {
+ +saveLinie(farbe: Farbe, zentimeter : int)
+}
+class Adapter2 {
+ +saveLinie(farbe: Farbe, millimeter :int)
+}
+Editor --> Adapter1 : saveLinie(farbe: Farbe, zentimeter :int)
+Adapter1 --> Altsystem : saveLinie(farbe: Farbe, millimeter :int)
+Altsystem --> Adapter2 : saveLinie(farbe: Farbe, millimeter: int)
+Adapter2 --> Editor : saveLinie(farbe: Farbe, zentimeter: int)
+@enduml
