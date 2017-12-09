@@ -2,11 +2,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import org.json.simple.parser.ParseException;
+
 public class JSONTest {
 
     @Test
     public void testOnlyNumbers() {
-        JSON json = new JSON("{number1: 1, number2: 2, number3: 3, number4: 4}");
+        JSON json = new JSON("{number: 1, number: 2, number: 3, number: 4}");
 
         assertEquals(10, json.sumValues());
     }
@@ -19,7 +21,7 @@ public class JSONTest {
     }
 
     @Test
-    public void testNumbersAndStrings() {
+    public void testNumbersAndStrings()  {
         JSON json = new JSON("{number: 1, string: \"String\", another_numer: 3, another_string: \"test\"}");
         assertEquals(4, json.sumValues());
         assertEquals("Stringtest", json.concatStrings());
