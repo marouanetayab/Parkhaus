@@ -1,0 +1,26 @@
+@startuml
+title __Erste Normalform (1ONF)__
+skinparam classAttributeIconSize 0
+class Abo{
+-Beginn: long
+-Gebuehr: long
+-Art: int
+}
+class Kunde{
+-KfzKennzeichen: String
+-Adresse: String
+-Firma: boolean
+}
+class ParkAuto {
+-platzNr: int
+-parkBeginn: long
+-parkEnde: long
+-parkDauer: int
+-parkGebuehr: int
+-bezahlArt: int
++ParkAuto()
+}
+Kunde -- ParkAuto
+Kunde -- Abo
+
+@enduml

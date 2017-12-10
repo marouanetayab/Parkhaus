@@ -1,5 +1,3 @@
-9.3 : Adapter
-
 @startuml
 skinparam classAttributeIconSize 0
 class Editor {

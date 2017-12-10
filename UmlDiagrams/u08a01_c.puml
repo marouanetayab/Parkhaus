@@ -1,0 +1,41 @@
+@startuml
+title __Dritte Normalform (3ONF)__
+skinparam classAttributeIconSize 0
+class Abo{
+-Beginn: long
+-Gebuehr: long
+-Art: int
+}
+class Kunde{
+-Adresse: String
+-Firma: boolean
++buyAbo(): void
++parkeAuto(): void
+
+
+}
+class ParkAuto {
+-parkGebuehr: int
+-bezahlArt: int
++bezahlen(): boolean
+}
+class ParkTimeInfo{
+-parkBeginn: long
+-parkEnde: long
+-parkDauer: int
+
+}
+class Auto{
+-KfzKennzeichen: String
+}
+class Parkplatz{
+-Nummer: int
+}
+ParkAuto -right-> Parkplatz
+ParkAuto -down-> ParkTimeInfo
+Kunde -- ParkAuto
+Kunde -right-> Abo
+Kunde -left-> Auto
+Abo -down-> Parkplatz
+
+@enduml
