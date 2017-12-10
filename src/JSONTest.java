@@ -2,13 +2,11 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import org.json.simple.parser.ParseException;
-
 public class JSONTest {
 
     @Test
     public void testOnlyNumbers() {
-        JSON json = new JSON("{number: 1, number: 2, number: 3, number: 4}");
+        JSON json = new JSON("{number1: 1, number2: 2, number3: 3, number4: 4}");
 
         assertEquals(10, json.sumValues());
     }
@@ -53,13 +51,13 @@ public class JSONTest {
 
     @Test
     public void testNumbersInArraysObjectsAndValues() {
-        JSON json = new JSON("number: 2, object: {number2: 1, anothervalue: 3, enc_object: {string: 3}, anotherarray: [5,6]}, array: [3,6, {id: 234}]");
+        JSON json = new JSON("{number: 2, object: {number2: 1, anothervalue: 3, enc_object: {string: 3}, anotherarray: [5,6]}, array: [3,6, {id: 234}]}");
         assertEquals(263, json.sumValues());
     }
 
     @Test
     public void testStringsInArraysObjectsAndValues() {
-        JSON json = new JSON("number: \"string\", object: {number2: \"2\", anothervalue: \"test3\", enc_object: {string: \"test\"}, anotherarray: [\"String\", \"String\"]}, array: [\"test\",\"tast\", {id: \"asdas\"}]");
+        JSON json = new JSON("{number: \"string\", object: {number2: \"2\", anothervalue: \"test3\", enc_object: {string: \"test\"}, anotherarray: [\"String\", \"String\"]}, array: [\"test\",\"tast\", {id: \"asdas\"}]}");
         assertEquals("string2test3testStringStringtesttastasdas", json.concatStrings());
     }
 }
