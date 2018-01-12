@@ -5,4 +5,5 @@ public interface FahrzeugIF {
 
 	public void unpark();
 
+	public void reset();
 }
