@@ -4,18 +4,20 @@ public class Parkhaus implements ParkhausIF {
 
 	Fahrzeug[] plaetze;
 	String[][] bills;
-	double pricepermin = 0.025; // entspricht 1.50€ prostunde
+	double umsatz;
+	double pricepersek = 0.025;
 
 	public Parkhaus(int anzPlaetze) {
 		plaetze = new Fahrzeug[anzPlaetze];
 		billsreset();
+		umsatz = 0;
 	}
 
 	private void billsreset() {
 		bills = new String[3][50];
 		bills[0][0] = "KFZ\t\t";
-		bills[1][0] = "Bill in €\t";
-		bills[2][0] = "Parktime in Min";
+		bills[1][0] = "Kosten in €\t";
+		bills[2][0] = "Parkzeit in Sek";
 	}
 
 	private void addBill(String k, String b, String t) {
@@ -29,9 +31,9 @@ public class Parkhaus implements ParkhausIF {
 			i++;
 		}
 
-		bills[0][i] = k+"\t";
-		bills[1][i] = b+"\t";
-		bills[2][i] = t+"\t";
+		bills[0][i] = k + "\t";
+		bills[1][i] = b + "\t";
+		bills[2][i] = t + "\t";
 
 	}
 
@@ -41,6 +43,16 @@ public class Parkhaus implements ParkhausIF {
 				return i;
 		}
 		return -1;
+	}
+
+	public void pps(double neu) {
+		pricepersek = neu;
+		System.out.println("Der Preis pro Sekunde beträgt " + pricepersek + "€");
+	}
+
+	public double getUmsatz() {
+		System.out.println("Der bisherige Umsatz beträgt " + umsatz + "€");
+		return umsatz;
 	}
 
 	public boolean park(Fahrzeug f) {
@@ -95,13 +107,15 @@ public class Parkhaus implements ParkhausIF {
 			int parknumber = f.parkNR;
 			f.unpark();
 
-			double bill = 100 * (f.duration * pricepermin);
+			double bill = 100 * (f.duration * pricepersek);
 			bill = Math.round(bill);
 			bill = bill / 100;
+			umsatz += bill;
 			double dur = 100 * f.duration;
 			dur = Math.round(dur);
 			dur = dur / 100;
-			addBill(f.kfz, "" + bill, "" + dur);
+			int durat = (int)dur;
+			addBill(f.kfz, "" + bill, "" + durat);
 			plaetze[parknumber] = null;
 			System.out.println("Fahrzeug " + f.kfz + " ist von Platz " + parknumber + " weggefahren!");
 			return true;
@@ -125,7 +139,7 @@ public class Parkhaus implements ParkhausIF {
 				anz++;
 			}
 		}
-		System.out.println("Es sind noch "+ anz + " Plätze frei!");
+		System.out.println("Es sind noch " + anz + " Plätze frei!");
 		return anz;
 	}
 

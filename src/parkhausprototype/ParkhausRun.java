@@ -19,6 +19,9 @@ public class ParkhausRun {
 		System.out.println("numberUnpark \t um einen bestimmten Platz frei zu machen");
 		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
 		System.out.println("free \t\t um die Anzahl freier Plätze zu erhalten");
+		System.out.println("sales \t\t um den bisherigen Umsatz zu sehen");
+		System.out.println("pps \t\t um die Parkgebühren pro Sekunde anzupassen");
+
 		boolean exit = false;
 		while (exit == false) {
 			String eingabe = scan.next();
@@ -58,9 +61,18 @@ public class ParkhausRun {
 				System.out.println("Anzahl der neuen Plätze");
 				int a1 = scan.nextInt();
 				p.createMorePlaces(a1);
+				System.out.println("Es gibt nun " + p.plaetze.length + " Plätze im Parkhaus!");
 				break;
 			case "free":
 				p.freePlaces();
+				break;
+			case "sales":
+				p.getUmsatz();
+				break;
+			case "pps":
+				System.out.println("Neuer Betrag:");
+				double p3 = scan.nextDouble();
+				p.pps(p3);
 				break;
 			default:
 				System.out.println("Ungültige eingabe!");

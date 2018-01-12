@@ -43,8 +43,8 @@ public class Fahrzeug implements FahrzeugIF {
 		double bm = begin.getMinute();
 		double bs = begin.getSecond();
 
-		double endinmin = 1 + (eh * 60) + em + (es / 60);
-		double begininmin = 1 + (bh * 60) + bm + (bs / 60);
+		double endinmin = 1 + (eh * 60) + 60*em + es;
+		double begininmin = 1 + (bh * 60) + 60*bm + bs;
 		return endinmin - begininmin;
 	}
 }
