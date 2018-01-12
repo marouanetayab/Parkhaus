@@ -152,4 +152,14 @@ public class Parkhaus implements ParkhausIF {
 			System.out.println();
 		}
 	}
+
+	public void showPlaces(){
+		for(int i = 0; i<plaetze.length;i++){
+			Fahrzeug f = plaetze[i];
+			if(f!=null){
+				System.out.print(f.kfz+" > "+ f.parkNR+ " | ");
+			}
+		}
+		System.out.println();
+	}
 }

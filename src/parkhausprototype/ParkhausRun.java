@@ -7,15 +7,11 @@ public class ParkhausRun {
 		Scanner scan = new Scanner(System.in);
 		
 		Parkhaus p = new Parkhaus(50);
-		Fahrzeug f1 = new Fahrzeug("F1");
-		Fahrzeug f2 = new Fahrzeug("F2");
-		Fahrzeug f3 = new Fahrzeug("F3");
-		Fahrzeug f4 = new Fahrzeug("F4");
-		Fahrzeug f5 = new Fahrzeug("F5");
 		
 		System.out.println("Eingabe:");
 		System.out.println("exit \t\t um die Simulation zu verlassen");
-		System.out.println("show \t\t um den Rechnungsverlauf zu sehen");
+		System.out.println("showbills \t um den Rechnungsverlauf zu sehen");
+		System.out.println("showplaces \t um ein Überblick über die Parkplätze zu kriegen");
 		System.out.println("park \t\t um ein neues Fahrzeug zu parken");
 		System.out.println("numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
 		System.out.println("unpark \t\t um ein Fahrzeug raus zu fahren");
@@ -27,8 +23,10 @@ public class ParkhausRun {
 			switch(eingabe){
 			case "exit":			
 									exit = true; break;
-			case "show": 		
+			case "showbills": 		
 									p.showBills();break;
+			case "showplaces":
+									p.showPlaces();break;
 			case "park": 			
 									System.out.println("Neues KFZ:");
 									String k1 = scan.next();
