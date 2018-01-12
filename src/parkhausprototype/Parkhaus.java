@@ -4,15 +4,32 @@ public class Parkhaus implements ParkhausIF {
 
 	Fahrzeug[] plaetze;
 	String[][] bills;
+	double[] wochenumsaetze;
 	double umsatz;
 	double pricepersek = 0.025;
 
+	public void dummy_daten_umsaetze(){
+		wochenumsaetze[0] = 532.04;
+		wochenumsaetze[1] = 385.32;
+		wochenumsaetze[2] = 299.75;
+		wochenumsaetze[3] = 0.0;
+		wochenumsaetze[4] = 412.61;
+		wochenumsaetze[5] = 664.53;
+		wochenumsaetze[6] = 923.59;
+		
+	}
+	
 	public Parkhaus(int anzPlaetze) {
 		plaetze = new Fahrzeug[anzPlaetze];
 		billsreset();
 		umsatz = 0;
+		wochenumsaetze = new double[55];
+		for(double data : wochenumsaetze){
+			data = -1;
+		}
 	}
 
+	
 	private void billsreset() {
 		bills = new String[3][50];
 		bills[0][0] = "KFZ\t\t";
@@ -37,6 +54,7 @@ public class Parkhaus implements ParkhausIF {
 
 	}
 
+	
 	public int getNextPlace() {
 		for (int i = 0; i < plaetze.length; i++) {
 			if (plaetze[i] == null)
@@ -54,7 +72,25 @@ public class Parkhaus implements ParkhausIF {
 		System.out.println("Der bisherige Umsatz beträgt " + umsatz + "€");
 		return umsatz;
 	}
-
+	
+	public void getWochenUmsaetze(){
+		for( int i = 0; i < wochenumsaetze.length;i++){
+			if(wochenumsaetze[i]>0.0)
+				System.out.print("Woche "+ (i+1)+": "+wochenumsaetze[i]+"€ \t | ");
+		}
+		System.out.println();
+	}
+	
+	public boolean neueWoche(){
+		for (int i = 0; i < wochenumsaetze.length; i++) {
+			if (wochenumsaetze[i] == -1)
+				wochenumsaetze[i] = umsatz;
+				umsatz = 0;
+				return true;
+		}
+		
+		return false;
+	}
 	public boolean park(Fahrzeug f) {
 		if (f.parked) {
 			System.out.println("Fahrzeug " + f.kfz + " ist bereits geparkt!");
