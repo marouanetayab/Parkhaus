@@ -4,7 +4,7 @@ public class Parkhaus implements ParkhausIF {
 
 	Fahrzeug[] plaetze;
 	String[][] bills;
-	double pricepermin = 0.025; //entspricht 1.50€ prostunde
+	double pricepermin = 0.025; // entspricht 1.50€ prostunde
 
 	public Parkhaus(int anzPlaetze) {
 		plaetze = new Fahrzeug[anzPlaetze];
@@ -52,7 +52,7 @@ public class Parkhaus implements ParkhausIF {
 			if (platz >= 0) {
 				plaetze[platz] = f;
 				f.park(platz);
-				System.out.println("Fahrzeug "+f.kfz+" wurde auf Platz "+platz+" geparkt!");
+				System.out.println("Fahrzeug " + f.kfz + " wurde auf Platz " + platz + " geparkt!");
 				return true;
 			}
 			System.out.println("Parkhaus ist voll!");
@@ -64,42 +64,48 @@ public class Parkhaus implements ParkhausIF {
 		if (f.parked) {
 			System.out.println("Fahrzeug " + f.kfz + " ist bereits geparkt!");
 			return false;
-		} else {
-			if (plaetze[wunschplatz] == null) {
-				plaetze[wunschplatz] = f;
-				f.park(wunschplatz);
-				System.out.println("Fahrzeug "+f.kfz+" wurde auf Platz "+wunschplatz+" geparkt!");
-				return true;
-			}
-			System.out.println("Parkplatz " + wunschplatz + " ist zur Zeit nicht verfügbar!");
+		}
+		if (wunschplatz < 0 || wunschplatz >= plaetze.length) {
+			System.out.println("Bitte versuchen sie es erneut mit einer Nummer zwischen 0 und "+ plaetze.length+"!");
 			return false;
 		}
-	}
-
-	public boolean unpark(String k){
-		for(Fahrzeug f: plaetze){
-			if(f!=null && f.kfz.compareTo(k)==0){
-				return unpark(f);
-				
-			}
-		}
-		System.out.println("Kein Fahrzeug mit dem KFZ "+k+" vorhanden!");
-		return false;
-	}
-	public boolean unpark(Fahrzeug f) {
-		if(f.parked){
-			int parknumber = f.parkNR;
-			f.unpark();
-			String bill = ""+(f.duration*pricepermin);
-			String dur = ""+ f.duration;
-			addBill(f.kfz, bill, dur);
-			plaetze[parknumber] = null;
-			System.out.println("Fahrzeug "+f.kfz+" ist von Platz "+parknumber+" weggefahren!");
+		if (plaetze[wunschplatz] == null) {
+			plaetze[wunschplatz] = f;
+			f.park(wunschplatz);
+			System.out.println("Fahrzeug " + f.kfz + " wurde auf Platz " + wunschplatz + " geparkt!");
 			return true;
 		}
-		System.out.println("Fahrzeug "+f.kfz+" ist nicht geparkt!");
-			return false;
+		System.out.println("Parkplatz " + wunschplatz + " ist zur Zeit nicht verfügbar!");
+		return false;
+	}
+
+	
+
+	public boolean unpark(String k) {
+		for (Fahrzeug f : plaetze) {
+			if (f != null && f.kfz.compareTo(k) == 0) {
+				return unpark(f);
+
+			}
 		}
+		System.out.println("Kein Fahrzeug mit dem KFZ " + k + " vorhanden!");
+		return false;
+	}
+
+	public boolean unpark(Fahrzeug f) {
+		if (f.parked) {
+			int parknumber = f.parkNR;
+			f.unpark();
+			String bill = "" + (f.duration * pricepermin);
+			String dur = "" + f.duration;
+			addBill(f.kfz, bill, dur);
+			plaetze[parknumber] = null;
+			System.out.println("Fahrzeug " + f.kfz + " ist von Platz " + parknumber + " weggefahren!");
+			return true;
+		}
+		System.out.println("Fahrzeug " + f.kfz + " ist nicht geparkt!");
+		return false;
+	}
 
 	public boolean unpark(int place) {
 		if (place >= 0 && place < plaetze.length && plaetze[place] != null)
@@ -118,7 +124,6 @@ public class Parkhaus implements ParkhausIF {
 		}
 		return anz;
 	}
-
 
 	public void createMorePlaces(int anz) {
 		Fahrzeug[] tmp = new Fahrzeug[plaetze.length + anz];
@@ -141,7 +146,7 @@ public class Parkhaus implements ParkhausIF {
 	public void showBills() {
 		for (int i = 0; i < bills.length; i++) {
 			for (int j = 0; j < bills[0].length; j++) {
-				if(bills[i][j]!=null)
+				if (bills[i][j] != null)
 					System.out.print(" \t | " + bills[i][j]);
 			}
 			System.out.println();
