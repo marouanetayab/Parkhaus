@@ -7,7 +7,7 @@ public class ParkhausRun {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
-		Parkhaus p = new Parkhaus(50);
+		Parkhaus p = new Parkhaus(5);
 
 		System.out.println("Eingabe:");
 		System.out.println("exit \t\t um die Simulation zu verlassen");
@@ -17,7 +17,8 @@ public class ParkhausRun {
 		System.out.println("numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
 		System.out.println("unpark \t\t um ein Fahrzeug raus zu fahren");
 		System.out.println("numberUnpark \t um einen bestimmten Platz frei zu machen");
-
+		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
+		System.out.println("free \t\t um die Anzahl freier Plätze zu erhalten");
 		boolean exit = false;
 		while (exit == false) {
 			String eingabe = scan.next();
@@ -52,6 +53,14 @@ public class ParkhausRun {
 				System.out.println("Platz:");
 				int pl = scan.nextInt();
 				p.unpark(pl);
+				break;
+			case "expand":
+				System.out.println("Anzahl der neuen Plätze");
+				int a1 = scan.nextInt();
+				p.createMorePlaces(a1);
+				break;
+			case "free":
+				p.freePlaces();
 				break;
 			default:
 				System.out.println("Ungültige eingabe!");

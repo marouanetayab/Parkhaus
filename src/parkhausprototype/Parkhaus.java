@@ -13,8 +13,8 @@ public class Parkhaus implements ParkhausIF {
 
 	private void billsreset() {
 		bills = new String[3][50];
-		bills[0][0] = "KFZ\t";
-		bills[1][0] = "Bill in €";
+		bills[0][0] = "KFZ\t\t";
+		bills[1][0] = "Bill in €\t";
 		bills[2][0] = "Parktime in Min";
 	}
 
@@ -29,9 +29,9 @@ public class Parkhaus implements ParkhausIF {
 			i++;
 		}
 
-		bills[0][i] = k;
-		bills[1][i] = b;
-		bills[2][i] = t;
+		bills[0][i] = k+"\t";
+		bills[1][i] = b+"\t";
+		bills[2][i] = t+"\t";
 
 	}
 
@@ -125,6 +125,7 @@ public class Parkhaus implements ParkhausIF {
 				anz++;
 			}
 		}
+		System.out.println("Es sind noch "+ anz + " Plätze frei!");
 		return anz;
 	}
 
