@@ -14,8 +14,8 @@ public class Parkhaus implements ParkhausIF {
 	private void billsreset() {
 		bills = new String[3][50];
 		bills[0][0] = "KFZ\t";
-		bills[1][0] = "Bill";
-		bills[2][0] = "Parktime";
+		bills[1][0] = "Bill in €";
+		bills[2][0] = "Parktime in Min";
 	}
 
 	private void addBill(String k, String b, String t) {
@@ -66,7 +66,7 @@ public class Parkhaus implements ParkhausIF {
 			return false;
 		}
 		if (wunschplatz < 0 || wunschplatz >= plaetze.length) {
-			System.out.println("Bitte versuchen sie es erneut mit einer Nummer zwischen 0 und "+ plaetze.length+"!");
+			System.out.println("Bitte versuchen sie es erneut mit einer Nummer zwischen 0 und " + plaetze.length + "!");
 			return false;
 		}
 		if (plaetze[wunschplatz] == null) {
@@ -78,8 +78,6 @@ public class Parkhaus implements ParkhausIF {
 		System.out.println("Parkplatz " + wunschplatz + " ist zur Zeit nicht verfügbar!");
 		return false;
 	}
-
-	
 
 	public boolean unpark(String k) {
 		for (Fahrzeug f : plaetze) {
@@ -96,9 +94,14 @@ public class Parkhaus implements ParkhausIF {
 		if (f.parked) {
 			int parknumber = f.parkNR;
 			f.unpark();
-			String bill = "" + (f.duration * pricepermin);
-			String dur = "" + f.duration;
-			addBill(f.kfz, bill, dur);
+
+			double bill = 100 * (f.duration * pricepermin);
+			bill = Math.round(bill);
+			bill = bill / 100;
+			double dur = 100 * f.duration;
+			dur = Math.round(dur);
+			dur = dur / 100;
+			addBill(f.kfz, "" + bill, "" + dur);
 			plaetze[parknumber] = null;
 			System.out.println("Fahrzeug " + f.kfz + " ist von Platz " + parknumber + " weggefahren!");
 			return true;
@@ -153,11 +156,11 @@ public class Parkhaus implements ParkhausIF {
 		}
 	}
 
-	public void showPlaces(){
-		for(int i = 0; i<plaetze.length;i++){
+	public void showPlaces() {
+		for (int i = 0; i < plaetze.length; i++) {
 			Fahrzeug f = plaetze[i];
-			if(f!=null){
-				System.out.print(f.kfz+" > "+ f.parkNR+ " | ");
+			if (f != null) {
+				System.out.print(f.kfz + " > " + f.parkNR + " | ");
 			}
 		}
 		System.out.println();

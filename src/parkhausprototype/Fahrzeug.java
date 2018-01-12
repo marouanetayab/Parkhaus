@@ -8,7 +8,7 @@ public class Fahrzeug implements FahrzeugIF {
 	int parkNR;
 	boolean parked;
 	LocalTime begin, end;
-	long duration;
+	double duration;
 
 	public Fahrzeug(String k) {
 		kfz = k;
@@ -35,16 +35,16 @@ public class Fahrzeug implements FahrzeugIF {
 		duration = dura();
 	}
 
-	private long dura() {
-		long eh = end.getHour();
-		long em = end.getMinute();
-		long es = end.getSecond();
-		long bh = begin.getHour();
-		long bm = begin.getMinute();
-		long bs = begin.getSecond();
+	private double dura() {
+		double eh = end.getHour();
+		double em = end.getMinute();
+		double es = end.getSecond();
+		double bh = begin.getHour();
+		double bm = begin.getMinute();
+		double bs = begin.getSecond();
 
-		long endinmin = 1 + (eh * 60) + em + (es / 60);
-		long begininmin = 1 + (bh * 60) + bm + (bs / 60);
+		double endinmin = 1 + (eh * 60) + em + (es / 60);
+		double begininmin = 1 + (bh * 60) + bm + (bs / 60);
 		return endinmin - begininmin;
 	}
 }
