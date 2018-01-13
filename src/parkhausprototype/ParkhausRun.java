@@ -20,7 +20,7 @@ public class ParkhausRun {
 		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
 		System.out.println("free \t\t um die Anzahl freier Plätze zu erhalten");
 		System.out.println("sales \t\t um den bisherigen Umsatz zu sehen");
-		System.out.println("allsales \t\t um alle Umsätze zu sehen");
+		System.out.println("allsales \t um alle Umsätze zu sehen");
 		System.out.println("pps \t\t um die Parkgebühren pro Sekunde anzupassen");
 
 		boolean exit = false;

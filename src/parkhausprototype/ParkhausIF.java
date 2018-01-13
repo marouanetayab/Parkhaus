@@ -1,13 +1,14 @@
 package parkhausprototype;
+
 public interface ParkhausIF {
 	
-	public int getNextPlace();				//sucht den naechsten freien platz raus
-  
-	public boolean park(Fahrzeug auto);		//parkt das auto auf dem naechsten freien Platz
-    
-	public boolean unpark(Fahrzeug auto);		//laesst das auto raus, wenn rechnung beglichen ist
+	public int getNextPlace();				
 	
-	public int freePlaces();				//anzahl der freien Plaetze
+	public boolean park(Fahrzeug auto);	
+	
+	public boolean unpark(Fahrzeug auto);		
+	
+	public int freePlaces();				
 	
 	public void pps(double neu);
 	
