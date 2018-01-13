@@ -1,0 +1,15 @@
+Das Parkhaussystem muss fähig sein die Anzahl der freien Plätze zu zählen.
+
+Das Parkhaussystem muss dem Kunden den nächsten freien Platz zuweisen.
+
+Bei Ausfahrt muss Das Parkhaussystem dem Kunden die Parkgebühr in Rechnung stellen.
+
+Zur Öffnungszeiten wird der Kunde fähig sein, sein Auto abzustellen oder abzuholen.
+
+Der Parkhaus Manager kann Öffnungszeiten und Preise festlegen.
+
+Das Parkhaussystem muss fähig sein den Tagesumsatz und den Wochenumsatz zu zählen.
+
+Das Parkhaussystem muss dem Besitzer und dem Manager den Umsatz zeigen.
+
+Der Parkhausbesitzer muss die Fähigkeit haben, sein Parkhaus zu erweitern.

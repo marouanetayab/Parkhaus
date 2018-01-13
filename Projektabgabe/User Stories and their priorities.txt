@@ -1,0 +1,35 @@
+1. Als Kunde möchte ich einen Parkplatz zugewiesen bekommen um keinen suchen zu müssen. 
+2. Als Kunde muss ich meine Parkgebühren zahlen, um mein Auto abzuholen
+3. Als Manager möchte ich die Öffnungszeiten festlegen können, um eventuellen Bedarf besser ab zu decken.
+4. Als Manager möchte ich die Preise festlegen können, um das Preis-Leistungs-Verhältnis dem Bedarf anzupassen.
+5. Als Manager kann ich den Kassenstand abrufen, um zu prüfen ob der Preis verändert werden muss.
+6. Als Manager kann ich den Kassenstand abrufen, um zu prüfen ob es Fehler im System gibt.
+7. Als Systementwickler möchte ich die Anzahl der freien Plätze wissen, um den nächsten freien Platz festzulegen.
+8. Als Staat muss ich den Umsatz wissen, um die richtige Steuer zu beantragen.
+9. Als Eigentümer kann ich die durchschnittliche Anzahl der freien Plätze abfragen, um gegebenenfalls das Parkhaus zu erweitern.
+10. Als Eigentümer kann ich das Parkhaus erweitern, um mehr Plätze zu beschaffen.
+11. Als Eigentümer kann ich den Umsatz meines Parkhaus irgendwann abrufen.
+
+User Story				    Wichtigkeit
+
+1						7
+
+2						10
+
+3						9
+
+4						9
+
+5						3
+
+6						2
+
+7						8
+
+8						7
+
+9						2
+
+10					        2
+
+11						1
