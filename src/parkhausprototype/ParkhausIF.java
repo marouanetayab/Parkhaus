@@ -23,17 +23,11 @@ public interface ParkhausIF {
 
 	int freePlaces();                //anzahl der freien Plaetze
 
-	void getWochenUmsaetze();
-
-	boolean neueWoche();
-
-	boolean parkOnPlace(Fahrzeug f, int wunschplatz);
+	boolean parkOnPlace(Fahrzeug f, int wunschplatz) throws Exception;
 
 	boolean unpark(String k) throws Exception;
 
 	boolean unpark(int place) throws Exception;
 
 	void createMorePlaces(int anz);
-
-	void showPlaces();
 }

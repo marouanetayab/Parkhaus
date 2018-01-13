@@ -42,22 +42,6 @@ public class ParkhausTest {
 	}
 
 	@Test
-	public void pps() {
-	}
-
-	@Test
-	public void getUmsatz() {
-	}
-
-	@Test
-	public void getWochenUmsaetze() {
-	}
-
-	@Test
-	public void neueWoche() {
-	}
-
-	@Test
 	public void park() {
 		assertEquals(10, parkhaus.freePlaces());
 		parkhaus.park(new Fahrzeug("test1"));
@@ -65,7 +49,7 @@ public class ParkhausTest {
 	}
 
 	@Test
-	public void parkOnPlace() {
+	public void parkOnPlace() throws Exception {
 		Fahrzeug fahrzeug = new Fahrzeug("testOnPlace");
 		parkhaus.parkOnPlace(fahrzeug, 9);
 		assertEquals(fahrzeug, parkhaus.plaetze[9]);
@@ -147,6 +131,31 @@ public class ParkhausTest {
 	}
 
 	@Test
-	public void showPlaces() {
+	public void getUmsatz() throws Exception {
+		assertEquals(0, parkhaus.getUmsatz(), 0);
+		parkhaus.park(new Fahrzeug("test"));
+		TimeUnit.SECONDS.sleep(1);
+		parkhaus.unpark("test");
+		assertEquals(Utils.round(parkhaus.getPricePerSek(), 2), parkhaus.getUmsatz(), 0);
+	}
+
+	@Test
+	public void setUmsatz() {
+	}
+
+	@Test
+	public void getPricePerSek() {
+	}
+
+	@Test
+	public void setPricePerSek() {
+	}
+
+	@Test
+	public void getBills() {
+	}
+
+	@Test
+	public void addBill() {
 	}
 }
