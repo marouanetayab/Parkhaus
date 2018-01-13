@@ -27,6 +27,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="com.google.code.gson:gson:2.8.2" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.+" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-core:2.+" level="project" />
   </component>
 </module>
