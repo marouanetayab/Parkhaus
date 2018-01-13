@@ -12,21 +12,24 @@ public interface ParkhausIF {
 	void setPricePerSek(double pricePerSek);
 
 	HashMap<String, Bill> getBills();
-	void addBill(String name, double kosten, double zeit); int getNextPlace();
 
-	 boolean park(Fahrzeug auto);
+	void addBill(String name, double kosten, double zeit);
 
-	 boolean unpark(Fahrzeug auto)throws Exception;
+	int getNextPlace();
 
-	 int freePlaces();
+	boolean park(Fahrzeug auto);
 
-	 boolean parkOnPlace(Fahrzeug f, int wunschplatz)throws Exception;
+	boolean unpark(Fahrzeug auto) throws Exception;
 
-	 boolean unpark(String k)throws Exception;
+	int freePlaces();
 
-	 boolean unpark(int place)throws Exception;
+	boolean parkOnPlace(Fahrzeug f, int wunschplatz) throws Exception;
 
-	 void createMorePlaces(int anz);
+	boolean unpark(String k) throws Exception;
+
+	boolean unpark(int place) throws Exception;
+
+	void createMorePlaces(int anz);
 
 
 }

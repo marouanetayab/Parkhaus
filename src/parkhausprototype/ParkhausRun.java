@@ -1,32 +1,24 @@
 package parkhausprototype;
 
-import java.util.Iterator;
+
 import java.util.Scanner;
 
 public class ParkhausRun {
-
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 
 		Parkhaus p = new Parkhaus(5);
-		System.out.println("Eingabe:");
-		System.out.println("exit \t\t um die Simulation zu verlassen");
-		System.out.println("showbills \t um den Rechnungsverlauf zu sehen");
-		System.out.println("showplaces \t um ein �berblick �ber die Parkpl�tze zu kriegen");
-		System.out.println("park \t\t um ein neues Fahrzeug zu parken");
-		System.out.println("numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
-		System.out.println("unpark \t\t um ein Fahrzeug raus zu fahren");
-		System.out.println("numberUnpark \t um einen bestimmten Platz frei zu machen");
-		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
-		System.out.println("free \t\t um die Anzahl freier Pl�tze zu erhalten");
-		System.out.println("sales \t\t um den bisherigen Umsatz zu sehen");
-		System.out.println("allsales \t um alle Ums�tze zu sehen");
-		System.out.println("pps \t\t um die Parkgeb�hren pro Sekunde anzupassen");
+		System.out.println("Wilkommen zum Virtuosen Parkhaus:");
+		System.out.println("Folgende Befehle stehen zur Verfuegung");
+		printHelp();
 
 		boolean exit = false;
 		while (!exit) {
 			String eingabe = scan.next();
 			switch (eingabe) {
+				case "help":
+					printHelp();
+					break;
 				case "exit":
 					exit = true;
 					break;
@@ -127,5 +119,21 @@ public class ParkhausRun {
 			}
 		}
 		scan.close();
+	}
+
+	private static void printHelp() {
+		System.out.println("help \t\t um diese Nachricht zu sehen");
+		System.out.println("exit \t\t um die Simulation zu verlassen");
+		System.out.println("showbills \t um den Rechnungsverlauf zu sehen");
+		System.out.println("showplaces \t um ein �berblick �ber die Parkpl�tze zu kriegen");
+		System.out.println("park \t\t um ein neues Fahrzeug zu parken");
+		System.out.println("numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
+		System.out.println("unpark \t\t um ein Fahrzeug raus zu fahren");
+		System.out.println("numberUnpark \t um einen bestimmten Platz frei zu machen");
+		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
+		System.out.println("free \t\t um die Anzahl freier Pl�tze zu erhalten");
+		System.out.println("sales \t\t um den bisherigen Umsatz zu sehen");
+		System.out.println("allsales \t um alle Ums�tze zu sehen");
+		System.out.println("pps \t\t um die Parkgeb�hren pro Sekunde anzupassen");
 	}
 }
