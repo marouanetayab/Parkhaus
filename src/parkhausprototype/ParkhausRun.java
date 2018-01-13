@@ -9,7 +9,6 @@ public class ParkhausRun {
 		Scanner scan = new Scanner(System.in);
 
 		Parkhaus p = new Parkhaus(5);
-		p.dummy_daten_umsaetze();
 		System.out.println("Eingabe:");
 		System.out.println("exit \t\t um die Simulation zu verlassen");
 		System.out.println("showbills \t um den Rechnungsverlauf zu sehen");
@@ -38,7 +37,12 @@ public class ParkhausRun {
 					}
 					break;
 				case "showplaces":
-					p.showPlaces();
+					for (Fahrzeug f : p.plaetze) {
+						if (f != null) {
+							System.out.print(f.kfz + " > " + f.parkNR + " | ");
+						}
+					}
+					System.out.println();
 					break;
 				case "park":
 					System.out.println("Neues KFZ:");
@@ -60,7 +64,21 @@ public class ParkhausRun {
 					String k2 = scan.next();
 					System.out.println("Platz: ");
 					int p2 = scan.nextInt();
-					p.parkOnPlace(new Fahrzeug(k2), p2);
+					Fahrzeug fz = new Fahrzeug(k2);
+					try {
+						boolean parked = p.parkOnPlace(fz, p2);
+						if (parked) {
+							System.out.println("Fahrzeug " + fz.kfz + " wurde auf Platz " + fz.parkNR + " geparkt!");
+						} else {
+							if (!fz.parked) {
+								System.out.println("Parkplatz " + p2 + " ist zur Zeit nicht verfügbar!");
+							} else {
+								System.out.println("Fahrzeug " + fz.kfz + " ist bereits geparkt!");
+							}
+						}
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
 					break;
 				case "unpark":
 					System.out.println("KFZ:");
@@ -101,7 +119,7 @@ public class ParkhausRun {
 					System.out.println("Der Preis pro Sekunde beträgt " + p3 + "€");
 					break;
 				case "allsales":
-					p.getWochenUmsaetze();
+					//p.getWochenUmsaetze();
 					break;
 				default:
 					System.out.println("Ung�ltige eingabe!");
