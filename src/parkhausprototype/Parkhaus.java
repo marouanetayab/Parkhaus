@@ -1,13 +1,11 @@
 package parkhausprototype;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Parkhaus implements ParkhausIF {
 
 	Fahrzeug[] plaetze;
 	private HashMap<String, Bill> bills = new HashMap<>();
-	double[] wochenumsaetze;
 	private double umsatz;
 	private double pricePerSek = 0.025;
 
@@ -37,22 +35,10 @@ public class Parkhaus implements ParkhausIF {
 		bills.put("bill_" + name, bill);
 	}
 
-	public void dummy_daten_umsaetze() {
-		wochenumsaetze[0] = 532.04;
-		wochenumsaetze[1] = 385.32;
-		wochenumsaetze[2] = 299.75;
-		wochenumsaetze[3] = 0.0;
-		wochenumsaetze[4] = 412.61;
-		wochenumsaetze[5] = 664.53;
-		wochenumsaetze[6] = 923.59;
-
-	}
 
 	public Parkhaus(int anzPlaetze) {
 		plaetze = new Fahrzeug[anzPlaetze];
 		umsatz = 0;
-		wochenumsaetze = new double[55];
-		Arrays.fill(wochenumsaetze, -1);
 	}
 
 
@@ -62,24 +48,6 @@ public class Parkhaus implements ParkhausIF {
 				return i;
 		}
 		return -1;
-	}
-
-	public void getWochenUmsaetze() {
-		for (int i = 0; i < wochenumsaetze.length; i++) {
-			if (wochenumsaetze[i] > 0.0)
-				System.out.print("Woche " + (i + 1) + ": " + wochenumsaetze[i] + "€ \t | ");
-		}
-		System.out.println();
-	}
-
-	public boolean neueWoche() {
-		for (int i = 0; i < wochenumsaetze.length; i++) {
-			if (wochenumsaetze[i] == -1)
-				wochenumsaetze[i] = umsatz;
-			umsatz = 0;
-			return true;
-		}
-		return false;
 	}
 
 	public boolean park(Fahrzeug f) {
@@ -96,22 +64,18 @@ public class Parkhaus implements ParkhausIF {
 		}
 	}
 
-	public boolean parkOnPlace(Fahrzeug f, int wunschplatz) {
+	public boolean parkOnPlace(Fahrzeug f, int wunschplatz) throws Exception {
 		if (f.parked) {
-			System.out.println("Fahrzeug " + f.kfz + " ist bereits geparkt!");
 			return false;
 		}
 		if (wunschplatz < 0 || wunschplatz >= plaetze.length) {
-			System.out.println("Bitte versuchen sie es erneut mit einer Nummer zwischen 0 und " + plaetze.length + "!");
-			return false;
+			throw new Exception("Bitte versuchen sie es erneut mit einer Nummer zwischen 0 und " + (plaetze.length - 1) + "!");
 		}
 		if (plaetze[wunschplatz] == null) {
 			plaetze[wunschplatz] = f;
 			f.park(wunschplatz);
-			System.out.println("Fahrzeug " + f.kfz + " wurde auf Platz " + wunschplatz + " geparkt!");
 			return true;
 		}
-		System.out.println("Parkplatz " + wunschplatz + " ist zur Zeit nicht verfügbar!");
 		return false;
 	}
 
@@ -130,15 +94,9 @@ public class Parkhaus implements ParkhausIF {
 			int parknumber = f.parkNR;
 			f.unpark();
 
-			double bill = 100 * (f.duration * pricePerSek);
-			bill = Math.round(bill);
-			bill = bill / 100;
+			double bill = Utils.round(f.duration * pricePerSek, 2);
 			umsatz += bill;
-			double dur = 100 * f.duration;
-			dur = Math.round(dur);
-			dur = dur / 100;
-			int durat = (int) dur;
-			addBill(f.kfz, bill, durat);
+			addBill(f.kfz, bill, Utils.round(f.duration, 2));
 			plaetze[parknumber] = null;
 			return true;
 		} else {
@@ -168,14 +126,5 @@ public class Parkhaus implements ParkhausIF {
 		Fahrzeug[] tmp = new Fahrzeug[plaetze.length + anz];
 		System.arraycopy(plaetze, 0, tmp, 0, plaetze.length);
 		plaetze = tmp;
-	}
-
-	public void showPlaces() {
-		for (Fahrzeug f : plaetze) {
-			if (f != null) {
-				System.out.print(f.kfz + " > " + f.parkNR + " | ");
-			}
-		}
-		System.out.println();
 	}
 }
