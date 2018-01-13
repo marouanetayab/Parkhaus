@@ -5,7 +5,7 @@ public class Bill implements BillIF{
 	private double kosten;
 	private double zeit;
 
-	public Bill(String fahrzeugName, double kosten, double zeit) {
+	Bill(String fahrzeugName, double kosten, double zeit) {
 		this.fahrzeugName = fahrzeugName;
 		this.kosten = kosten;
 		this.zeit = zeit;
