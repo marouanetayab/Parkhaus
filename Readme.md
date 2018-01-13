@@ -24,3 +24,5 @@ Storymap : https://github.com/mtayab1994/Parkhaus/blob/master/Projektabgabe/stor
 
 
 Java Klassen, Interfaces und J-Unit tests: https://github.com/mtayab1994/Parkhaus/tree/master/src/parkhausprototype
+
+Projektpräsentation: https://github.com/mtayab1994/Parkhaus/blob/master/Projektabgabe/Pr%C3%A4sentation.pdf
