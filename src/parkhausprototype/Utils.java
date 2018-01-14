@@ -2,6 +2,7 @@ package parkhausprototype;
 
 import de.vandermeer.asciitable.AsciiTable;
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Optional;
@@ -51,5 +52,20 @@ public class Utils {
 			at.addRule();
 		}
 		return at.render();
+	}
+
+	public static String readFileToString(String fileName){
+		try {
+			File file = new File(fileName);
+			byte[] data = new byte[(int) file.length()];
+			FileInputStream fis = new FileInputStream(file);
+			//noinspection ResultOfMethodCallIgnored
+			fis.read(data);
+			fis.close();
+			return new String(data, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "";
 	}
 }

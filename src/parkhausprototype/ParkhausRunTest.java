@@ -34,8 +34,9 @@ public class ParkhausRunTest {
 	private String fExpected;
 
 	public ParkhausRunTest(String task) {
-		fInput = "test/input/" + task + ".txt";
-		fExpected = "test/output/" + task + ".txt";
+		String rootFolder = "test/runner";
+		fInput = rootFolder + "/input/" + task + ".txt";
+		fExpected = rootFolder + "/output/" + task + ".txt";
 	}
 
 	@Parameters(name = "{0}")
@@ -62,18 +63,8 @@ public class ParkhausRunTest {
 		FileInputStream fis = new FileInputStream(new File(fInput));
 		System.setIn(fis);
 		ParkhausRun.main(new String[0]);
-		String expected = getStartText() + readFile(fExpected);
+		String expected = getStartText() + Utils.readFileToString(fExpected);
 		assertEquals(expected.trim(), outContent.toString().trim());
-	}
-
-	private String readFile(String fileName) throws IOException {
-		File file = new File(fileName);
-		FileInputStream fis = new FileInputStream(file);
-		byte[] data = new byte[(int) file.length()];
-		fis.read(data);
-		fis.close();
-
-		return new String(data, "UTF-8");
 	}
 
 	private String getStartText() {

@@ -29,4 +29,9 @@ public class UtilsTest {
 		assertEquals("01:20", Utils.formatTime(1.2));
 		assertEquals("23:20", Utils.formatTime(23.2));
 	}
+
+	@Test
+	public void readFileToString() {
+		assertEquals("Content\n\nmultiple Strings\n\nlong", Utils.readFileToString("test/utils/readtoString.txt"));
+	}
 }
