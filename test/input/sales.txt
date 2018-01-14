@@ -6,7 +6,7 @@ test2
 park
 test3
 sleep
-2
+1
 unpark
 test1
 unpark

@@ -11,4 +11,4 @@ KFZ:
 Fahrzeug test2 weggefahren!
 KFZ:
 Fahrzeug test3 weggefahren!
-Der bisherige Umsatz beträgt 0.15€
+Der bisherige Umsatz beträgt 0.09€
