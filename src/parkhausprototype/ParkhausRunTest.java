@@ -69,19 +69,21 @@ public class ParkhausRunTest {
 
 	private String getStartText() {
 		return "Wilkommen zum Virtuosen Parkhaus:\n" +
-			"Folgende Befehle stehen zur Verfuegung\n" +
-			"help \t\t um diese Nachricht zu sehen\n" +
-			"exit \t\t um die Simulation zu verlassen\n" +
-			"showbills \t um den Rechnungsverlauf zu sehen\n" +
-			"showplaces \t um ein �berblick �ber die Parkpl�tze zu kriegen\n" +
-			"park \t\t um ein neues Fahrzeug zu parken\n" +
-			"numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken\n" +
-			"unpark \t\t um ein Fahrzeug raus zu fahren\n" +
-			"numberUnpark \t um einen bestimmten Platz frei zu machen\n" +
-			"expand \t\t um mehr Parkplaetze zu erschaffen\n" +
-			"free \t\t um die Anzahl freier Pl�tze zu erhalten\n" +
-			"sales \t\t um den bisherigen Umsatz zu sehen\n" +
-			"allsales \t um alle Ums�tze zu sehen\n" +
-			"pps \t\t um die Parkgeb�hren pro Sekunde anzupassen\n";
+			"Folgende Befehle stehen zur Verfügung\n" +
+			"┌────────────┬──────────────────────────────────────────────────────────┐\n" +
+			"│help        │um diese Nachricht zu sehen                               │\n" +
+			"│exit        │Programm beenden                                          │\n" +
+			"│showbills   │um den Rechnungsverlauf zu sehen                          │\n" +
+			"│showplaces  │um ein Überblick über die Parkplätze zu kriegen           │\n" +
+			"│park        │um ein neues Fahrzeug zu parken                           │\n" +
+			"│numberPark  │um ein neues Fahrzeug auf einem bestimmten Platz zu parken│\n" +
+			"│unpark      │um ein Fahrzeug raus zu fahren                            │\n" +
+			"│numberUnpark│um einen bestimmten Platz frei zu machen                  │\n" +
+			"│expand      │um mehr Parkplaetze zu erschaffen                         │\n" +
+			"│free        │um die Anzahl freier Plätze zu erhalten                   │\n" +
+			"│sales       │um den bisherigen Umsatz zu sehen                         │\n" +
+			"│allsales    │um alle Umsätze zu sehen                                  │\n" +
+			"│pps         │um die Parkgebühren pro Sekunde anzupassen                │\n" +
+			"└────────────┴──────────────────────────────────────────────────────────┘\n";
 	}
 }

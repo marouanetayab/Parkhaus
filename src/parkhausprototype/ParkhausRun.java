@@ -1,6 +1,9 @@
 package parkhausprototype;
 
 
+import de.vandermeer.asciitable.AsciiTable;
+import de.vandermeer.asciitable.CWC_LongestLine;
+
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -10,7 +13,7 @@ public class ParkhausRun {
 
 		Parkhaus p = new Parkhaus(5);
 		System.out.println("Wilkommen zum Virtuosen Parkhaus:");
-		System.out.println("Folgende Befehle stehen zur Verfuegung");
+		System.out.println("Folgende Befehle stehen zur Verfügung");
 		printHelp();
 
 		boolean exit = false;
@@ -144,18 +147,24 @@ public class ParkhausRun {
 	}
 
 	private static void printHelp() {
-		System.out.println("help \t\t um diese Nachricht zu sehen");
-		System.out.println("exit \t\t um die Simulation zu verlassen");
-		System.out.println("showbills \t um den Rechnungsverlauf zu sehen");
-		System.out.println("showplaces \t um ein �berblick �ber die Parkpl�tze zu kriegen");
-		System.out.println("park \t\t um ein neues Fahrzeug zu parken");
-		System.out.println("numberPark \t um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
-		System.out.println("unpark \t\t um ein Fahrzeug raus zu fahren");
-		System.out.println("numberUnpark \t um einen bestimmten Platz frei zu machen");
-		System.out.println("expand \t\t um mehr Parkplaetze zu erschaffen");
-		System.out.println("free \t\t um die Anzahl freier Pl�tze zu erhalten");
-		System.out.println("sales \t\t um den bisherigen Umsatz zu sehen");
-		System.out.println("allsales \t um alle Ums�tze zu sehen");
-		System.out.println("pps \t\t um die Parkgeb�hren pro Sekunde anzupassen");
+		AsciiTable at = new AsciiTable();
+		at.addRule();
+		at.addRow("help", "um diese Nachricht zu sehen");
+		at.addRow("exit", "Programm beenden");
+		at.addRow("showbills", "um den Rechnungsverlauf zu sehen");
+		at.addRow("showplaces", "um ein Überblick über die Parkplätze zu kriegen");
+		at.addRow("park", "um ein neues Fahrzeug zu parken");
+		at.addRow("numberPark", "um ein neues Fahrzeug auf einem bestimmten Platz zu parken");
+		at.addRow("unpark", "um ein Fahrzeug raus zu fahren");
+		at.addRow("numberUnpark", "um einen bestimmten Platz frei zu machen");
+		at.addRow("expand", "um mehr Parkplaetze zu erschaffen");
+		at.addRow("free", "um die Anzahl freier Plätze zu erhalten");
+		at.addRow("sales", "um den bisherigen Umsatz zu sehen");
+		at.addRow("allsales", "um alle Umsätze zu sehen");
+		at.addRow("pps", "um die Parkgebühren pro Sekunde anzupassen");
+		at.addRule();
+		at.getRenderer().setCWC(new CWC_LongestLine());
+		System.out.println(at.render());
+
 	}
 }

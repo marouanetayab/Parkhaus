@@ -1,13 +1,15 @@
-help 		 um diese Nachricht zu sehen
-exit 		 um die Simulation zu verlassen
-showbills 	 um den Rechnungsverlauf zu sehen
-showplaces 	 um ein �berblick �ber die Parkpl�tze zu kriegen
-park 		 um ein neues Fahrzeug zu parken
-numberPark 	 um ein neues Fahrzeug auf einem bestimmten Platz zu parken
-unpark 		 um ein Fahrzeug raus zu fahren
-numberUnpark 	 um einen bestimmten Platz frei zu machen
-expand 		 um mehr Parkplaetze zu erschaffen
-free 		 um die Anzahl freier Pl�tze zu erhalten
-sales 		 um den bisherigen Umsatz zu sehen
-allsales 	 um alle Ums�tze zu sehen
-pps 		 um die Parkgeb�hren pro Sekunde anzupassen
+┌────────────┬──────────────────────────────────────────────────────────┐
+│help        │um diese Nachricht zu sehen                               │
+│exit        │Programm beenden                                          │
+│showbills   │um den Rechnungsverlauf zu sehen                          │
+│showplaces  │um ein Überblick über die Parkplätze zu kriegen           │
+│park        │um ein neues Fahrzeug zu parken                           │
+│numberPark  │um ein neues Fahrzeug auf einem bestimmten Platz zu parken│
+│unpark      │um ein Fahrzeug raus zu fahren                            │
+│numberUnpark│um einen bestimmten Platz frei zu machen                  │
+│expand      │um mehr Parkplaetze zu erschaffen                         │
+│free        │um die Anzahl freier Plätze zu erhalten                   │
+│sales       │um den bisherigen Umsatz zu sehen                         │
+│allsales    │um alle Umsätze zu sehen                                  │
+│pps         │um die Parkgebühren pro Sekunde anzupassen                │
+└────────────┴──────────────────────────────────────────────────────────┘
