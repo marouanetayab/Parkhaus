@@ -98,7 +98,7 @@ public class ParkhausRun {
 					System.out.println("Es sind noch " + anz + " Plätze frei!");
 					break;
 				case "sales":
-					System.out.println("Der bisherige Umsatz beträgt " + Utils.formatMoney(p.getUmsatz())+ "€");
+					System.out.println("Der bisherige Umsatz beträgt " + Utils.formatMoney(p.getUmsatz()) + "€");
 					break;
 				case "pps":
 					System.out.println("Neuer Betrag:");
@@ -116,6 +116,25 @@ public class ParkhausRun {
 						System.out.println(e.getMessage());
 					}
 					break;
+				case "save": {
+					System.out.println("Dateiname:");
+					String filename = scan.next();
+					Persister persister = new Persister(filename);
+					if (persister.saveToFile(p)) {
+						System.out.println("Parkhaus erfolgreich in Datei " + filename + " gespeichert");
+					} else {
+						System.out.println("Ein Fehler ist aufgetreten");
+					}
+					break;
+				}
+				case "load": {
+					System.out.println("Dateiname:");
+					String filename = scan.next();
+					Persister persister = new Persister(filename);
+					p = persister.loadFromFile();
+					System.out.println("Parkhaus aus Datei " + filename + " geladen");
+					break;
+				}
 				default:
 					System.out.println("Ungültige eingabe!");
 

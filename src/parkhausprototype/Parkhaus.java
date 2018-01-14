@@ -1,6 +1,8 @@
 package parkhausprototype;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class Parkhaus implements ParkhausIF {
 
@@ -39,6 +41,14 @@ public class Parkhaus implements ParkhausIF {
 	public Parkhaus(int anzPlaetze) {
 		plaetze = new Fahrzeug[anzPlaetze];
 		umsatz = 0;
+	}
+
+	public Parkhaus(Fahrzeug[] plaetze, HashMap<String, Bill> bills, double umsatz, double pricePerSek) {
+		this.plaetze = plaetze;
+		this.bills = bills;
+
+		setUmsatz(umsatz);
+		setPricePerSek(pricePerSek);
 	}
 
 
@@ -126,5 +136,16 @@ public class Parkhaus implements ParkhausIF {
 		Fahrzeug[] tmp = new Fahrzeug[plaetze.length + anz];
 		System.arraycopy(plaetze, 0, tmp, 0, plaetze.length);
 		plaetze = tmp;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Parkhaus parkhaus = (Parkhaus) o;
+		return Double.compare(parkhaus.umsatz, umsatz) == 0 &&
+			Double.compare(parkhaus.pricePerSek, pricePerSek) == 0 &&
+			Arrays.equals(plaetze, parkhaus.plaetze) &&
+			Objects.equals(bills, parkhaus.bills);
 	}
 }

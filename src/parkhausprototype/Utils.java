@@ -2,8 +2,13 @@ package parkhausprototype;
 
 import de.vandermeer.asciitable.AsciiTable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -24,8 +29,8 @@ public class Utils {
 
 
 	public static String formatTime(double time) {
-		int minutes = (int) time % 24;
-		int seconds = (int) Math.round((time - minutes) * 100) % 60;
+		int minutes = (int) time;
+		int seconds = (int) Math.round((time - minutes) * 100);
 		return String.format("%02d:%02d", minutes, seconds);
 	}
 
@@ -35,7 +40,7 @@ public class Utils {
 		at.addRow("Fahrzeug", "Kosten in €", "Parkzeit");
 		at.addRule();
 		for (Bill bill : bills) {
-			at.addRow(bill.getFahrzeugName(),Utils.formatMoney(bill.getKosten()), Utils.formatTime(bill.getZeit()));
+			at.addRow(bill.getFahrzeugName(), Utils.formatMoney(bill.getKosten()), Utils.formatTime(bill.getZeit()));
 			at.addRule();
 		}
 		return at.render();
@@ -54,9 +59,12 @@ public class Utils {
 		return at.render();
 	}
 
-	public static String readFileToString(String fileName){
+	public static String readFileToString(String fileName) {
+		return readFileToString(new File(fileName));
+	}
+
+	public static String readFileToString(File file) {
 		try {
-			File file = new File(fileName);
 			byte[] data = new byte[(int) file.length()];
 			FileInputStream fis = new FileInputStream(file);
 			//noinspection ResultOfMethodCallIgnored
@@ -67,5 +75,31 @@ public class Utils {
 			e.printStackTrace();
 		}
 		return "";
+	}
+
+	public static boolean writeStringToFile(String filename, String content) {
+		return Utils.writeStringToFile(new File(filename), content);
+	}
+
+	public static boolean writeStringToFile(File file, String content) {
+		try (PrintWriter out = new PrintWriter(file)) {
+			out.println(content);
+			return true;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+
+
+	public static String getDateTimeString(LocalDateTime time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		return formatter.format(time);
+	}
+
+	public static LocalDateTime getDateTimeFromString(String time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		return LocalDateTime.parse(time, formatter);
 	}
 }

@@ -1,18 +1,25 @@
 package parkhausprototype;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 public class Fahrzeug implements FahrzeugIF {
 
 	String kfz;
 	int parkNR;
 	boolean parked;
-	LocalTime begin, end;
+	LocalDateTime begin, end;
 	double duration;
 
 	public Fahrzeug(String k) {
 		kfz = k;
 		reset();
+	}
+
+	public Fahrzeug(String kfz, int parkNR, LocalDateTime begin) {
+		this.kfz = kfz;
+		this.parkNR = parkNR;
+		this.begin = begin;
+		this.parked = true;
 	}
 
 	public void reset() {
@@ -23,14 +30,14 @@ public class Fahrzeug implements FahrzeugIF {
 	public void park(int nr) {
 		parked = true;
 		parkNR = nr;
-		begin = LocalTime.now();
+		begin = LocalDateTime.now();
 		begin = begin.withNano(0);
 	}
 
 	public void unpark() {
 		parked = false;
 		parkNR = -1;
-		end = LocalTime.now();
+		end = LocalDateTime.now();
 		end = end.withNano(0);
 		duration = dura();
 	}
