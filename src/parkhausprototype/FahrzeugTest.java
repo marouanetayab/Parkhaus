@@ -3,7 +3,7 @@ package parkhausprototype;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
@@ -29,7 +29,7 @@ public class FahrzeugTest {
         fahrzeug.park(1);
         assertEquals(1, fahrzeug.parkNR);
         assertTrue(fahrzeug.parked);
-        assertEquals(LocalTime.now().withNano(0), fahrzeug.begin);
+        assertEquals(LocalDateTime.now().withNano(0), fahrzeug.begin);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class FahrzeugTest {
         fahrzeug.park(1);
         TimeUnit.SECONDS.sleep(1);
         fahrzeug.unpark();
-        assertEquals(LocalTime.now().withNano(0), fahrzeug.end);
+        assertEquals(LocalDateTime.now().withNano(0), fahrzeug.end);
         assertEquals(1, fahrzeug.duration, 0);
     }
 }
