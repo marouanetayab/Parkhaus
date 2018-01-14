@@ -2,6 +2,7 @@ package parkhausprototype;
 
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class ParkhausRun {
 	public static void main(String[] args) {
@@ -23,17 +24,11 @@ public class ParkhausRun {
 					exit = true;
 					break;
 				case "showbills":
-					System.out.println("Fahrzeug \t Kosten in € \t Parkzeit");
-					for (Bill bill : p.getBills().values()) {
-						System.out.println(bill.getFahrzeugName() + "\t" + bill.getKosten() + "\t" + bill.getZeit());
-					}
+					System.out.println("Rechnungen:");
+					System.out.println(Utils.buildTableOutputBills(p.getBills().values()));
 					break;
 				case "showplaces":
-					for (Fahrzeug f : p.plaetze) {
-						if (f != null) {
-							System.out.print(f.kfz + " > " + f.parkNR + " | ");
-						}
-					}
+					System.out.println(Utils.buildTableOutputPlaces(p.plaetze));
 					System.out.println();
 					break;
 				case "park":
@@ -54,7 +49,7 @@ public class ParkhausRun {
 				case "numberPark":
 					System.out.println("Neues KFZ:");
 					String k2 = scan.next();
-					System.out.println("Platz: ");
+					System.out.println("Platz:");
 					int p2 = scan.nextInt();
 					Fahrzeug fz = new Fahrzeug(k2);
 					try {
@@ -83,29 +78,30 @@ public class ParkhausRun {
 					}
 					break;
 				case "numberUnpark":
-					System.out.println("Platz");
+					System.out.println("Platz:");
 					int pl = scan.nextInt();
 					try {
 						p.unpark(pl);
+						System.out.println("Fahrzeug von Platz " + pl + " weggefahren!");
 					} catch (Exception e) {
 						System.out.println(e.getMessage());
 					}
 					break;
 				case "expand":
-					System.out.println("Anzahl der neuen Pl�tze");
+					System.out.println("Anzahl der neuen Plätze");
 					int a1 = scan.nextInt();
 					p.createMorePlaces(a1);
-					System.out.println("Es gibt nun " + p.plaetze.length + " Pl�tze im Parkhaus!");
+					System.out.println("Es gibt nun " + p.plaetze.length + " Plätze im Parkhaus!");
 					break;
 				case "free":
 					int anz = p.freePlaces();
 					System.out.println("Es sind noch " + anz + " Plätze frei!");
 					break;
 				case "sales":
-					System.out.println("Der bisherige Umsatz beträgt " + p.getUmsatz() + "€");
+					System.out.println("Der bisherige Umsatz beträgt " + Utils.formatMoney(p.getUmsatz())+ "€");
 					break;
 				case "pps":
-					System.out.print("Neuer Betrag");
+					System.out.println("Neuer Betrag:");
 					double p3 = scan.nextDouble();
 					p.setPricePerSek(p3);
 					System.out.println("Der Preis pro Sekunde beträgt " + p3 + "€");
@@ -113,8 +109,15 @@ public class ParkhausRun {
 				case "allsales":
 					//p.getWochenUmsaetze();
 					break;
+				case "sleep":
+					try {
+						TimeUnit.SECONDS.sleep(scan.nextInt());
+					} catch (InterruptedException e) {
+						System.out.println(e.getMessage());
+					}
+					break;
 				default:
-					System.out.println("Ung�ltige eingabe!");
+					System.out.println("Ungültige eingabe!");
 
 			}
 		}

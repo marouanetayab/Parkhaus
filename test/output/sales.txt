@@ -1,1 +1,14 @@
-Der bisherige Umsatz beträgt 0.0€
+Der bisherige Umsatz beträgt 0.00€
+Neues KFZ:
+Fahrzeug test1 wurde auf Platz 0 geparkt!
+Neues KFZ:
+Fahrzeug test2 wurde auf Platz 1 geparkt!
+Neues KFZ:
+Fahrzeug test3 wurde auf Platz 2 geparkt!
+KFZ:
+Fahrzeug test1 weggefahren!
+KFZ:
+Fahrzeug test2 weggefahren!
+KFZ:
+Fahrzeug test3 weggefahren!
+Der bisherige Umsatz beträgt 0.15€

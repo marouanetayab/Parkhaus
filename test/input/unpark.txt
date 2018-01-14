@@ -1,2 +1,5 @@
+park
+test1
 unpark
+test1
 exit

@@ -1,1 +1,10 @@
-Fahrzeug 	 Kosten in € 	 Parkzeit
+Neues KFZ:
+Fahrzeug testBills wurde auf Platz 0 geparkt!
+KFZ:
+Fahrzeug testBills weggefahren!
+Rechnungen:
+┌──────────────────────────┬─────────────────────────┬─────────────────────────┐
+│Fahrzeug                  │Kosten in €              │Parkzeit                 │
+├──────────────────────────┼─────────────────────────┼─────────────────────────┤
+│testBills                 │0.00                     │00:00                    │
+└──────────────────────────┴─────────────────────────┴─────────────────────────┘

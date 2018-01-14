@@ -1,2 +1,17 @@
 sales
+park
+test1
+park
+test2
+park
+test3
+sleep
+2
+unpark
+test1
+unpark
+test2
+unpark
+test3
+sales
 exit

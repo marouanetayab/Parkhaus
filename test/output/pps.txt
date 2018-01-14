@@ -1,0 +1,2 @@
+Neuer Betrag:
+Der Preis pro Sekunde beträgt 0.25€

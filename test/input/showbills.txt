@@ -1,2 +1,6 @@
+park
+testBills
+unpark
+testBills
 showbills
 exit

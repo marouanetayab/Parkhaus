@@ -1,0 +1,2 @@
+Neues KFZ:
+Fahrzeug test1 wurde auf Platz 0 geparkt!

@@ -1,2 +1,6 @@
+park
+place1
+park
+place2
 showplaces
 exit

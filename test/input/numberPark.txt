@@ -1,2 +1,4 @@
 numberPark
+testNumber
+4
 exit

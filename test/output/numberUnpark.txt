@@ -1,0 +1,5 @@
+Neues KFZ:
+Platz:
+Fahrzeug testNumber wurde auf Platz 4 geparkt!
+Platz:
+Fahrzeug von Platz 4 weggefahren!
